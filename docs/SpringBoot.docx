@@ -1,0 +1,46 @@
+Create a Employee Management Project in SpringBoot using H2 in-memory database
+
+1. Model (Entity Management)
+- Spring Boot uses JPA to manage entities like Employee
+- It handles CRUD operations, transactions, and interactions with the database
+- when the application starts run, automatically handle the creation of the corresponding table and perform CRUD operations based on this class
+
+    Annotations:
+        - @Entity
+            annotation tells Spring Boot (through JPA) that the Employee class is an entity and should be mapped to a table in the database
+        - @Id
+            Primary Key, JPA will use this field as the unique identifier for records in the employee table
+        - @GeneratedValue(strategy = GenerationType.IDENTITY)
+            Specifies how the primary key should be generated. GenerationType.IDENTITY means that the database will handle the generation of unique values for this column
+            When a new Employee record is inserted, the database will automatically generate a unique ID for it
+        - @AllArgsConstructor
+            - parameterized constructor
+        - @NoArgsConstructor
+            used by JPA to create instances of the entity. If you use a parameterized constructor, make sure to have a no-args constructor as well
+            Allows you to create an Employee instance with initial values for name, department, and salary
+            Makes it easier to initialize Employee objects with specific values, useful for creating or updating records
+        - @Getter, @Setter
+            Getters and setters are used to access and modify the private fields of the Employee class
+            These are standard methods in Java that allow other classes to interact with the private fields of this class
+            These methods ensure encapsulation, allowing controlled access to the entity's fields
+            JPA uses these methods to read and write the values of the fields
+
+- Fields: 
+    - represent columns in the employee table
+    - Each field corresponds to a column in the table
+    - JPA will map these fields to columns in the employee table, so the data will be stored and retrieved from these columns
+
+
+2. Repository Layer
+- repository interface extends JpaRepository or another Spring Data interface
+- This interface will provide methods to perform database operations on Employee entities
+- Custom query methods (if needed) can be defined in this class
+
+Service
+- service class that uses the repository to perform business logic involving Employee entities
+- Business methods to handle Employee operations
+
+Service Implementation
+
+Controller
+- have a REST controller to handle HTTP requests related to Employee, using the service to interact with the repository
