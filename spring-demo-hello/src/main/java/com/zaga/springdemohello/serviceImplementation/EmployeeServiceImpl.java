@@ -16,15 +16,20 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     private EmployeeRepository empRepo;
 
-    private static List<Employee> employees = new ArrayList<>();
-    static {
-        employees.add(new Employee("Alice", "IT", 200000.00));
-    }
+    // private static List<Employee> employees = new ArrayList<>();
+    // static {
+    //     employees.add(new Employee(1, "Alice", "IT", 200000.00));
+    // }
 
     @Override
-    public List<Employee> getAllEmployees() {
-        // return empRepo.findAll();
-        return employees;
+    public Employee saveEmployee(Employee employee) {
+        return empRepo.save(employee);
     }
+
+    // @Override
+    // public List<Employee> getAllEmployees() {
+    //     // return empRepo.findAll();
+    //     return employees;
+    // }
 
 }
