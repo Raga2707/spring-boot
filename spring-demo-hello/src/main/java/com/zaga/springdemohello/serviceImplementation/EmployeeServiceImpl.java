@@ -1,8 +1,5 @@
 package com.zaga.springdemohello.serviceImplementation;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +19,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     // }
 
     @Override
-    public Employee saveEmployee(Employee employee) {
-        return empRepo.save(employee);
+    public Employee saveEmployee(String name, String department, double salary) {
+        Employee emp = new Employee();
+        emp.setName(name);
+        emp.setDepartment(department);
+        emp.setSalary(salary);
+        System.out.println(emp.getName() + "EMP NAME");
+        System.out.println(emp + "Employee Result");
+        // return empRepo.save(emp);
+        empRepo.save(emp);
+        return emp;
+
     }
 
     // @Override
